@@ -1,5 +1,7 @@
 package VariabilaMetoda;
 
+import org.testng.annotations.Test;
+
 public class Student {
 
     //Clasa = Sablon care defineste proprietatile si comportamenul unei entitati specifice
@@ -13,6 +15,9 @@ public class Student {
     //Ca sa definim o variabila globala: accesscontrol(public) tip variabila, nume variabila
     //In momentul cand definim o variabila nu este obligatoriu sa ii dam o valoare
 
+    //Metoda = actiunea undei clase
+    //Exista 2 tipuri de metode: void si return
+
     public String Nume;
     public String Prenume;
     public Integer Varsta;
@@ -21,6 +26,42 @@ public class Student {
     public Float Greutate;
     public Character Sex;
     public Boolean AreDiploma;
+
+    @Test
+    public void prezentareStudent(){
+        Nume = "Ioana";
+        Prenume = "Sergiu";
+        Varsta = 31;
+        Adresa = "Utrecht";
+        Inaltime = 1.71;
+        Greutate = 70.00F;
+        Sex = 'M';
+        AreDiploma = true;
+
+        //System.out.println(Nume+" "+Prenume+" "+Varsta+" "+Adresa);
+        //System.out.println(Inaltime);
+
+        System.out.println("Numele studentului este: " + Nume);
+        System.out.println("Prenumele studentului este: " + Prenume);
+        System.out.println("Varsta studentului este: " + Varsta);
+        System.out.println("Adresa studentului este: " + Adresa);
+        System.out.println("Inaltime studentului este: " + Inaltime);
+        System.out.println("Greutate studentului este: " + Greutate);
+        System.out.println("Sex-ul studentului este: " + Sex);
+        System.out.println("Are studentul diploma? " + AreDiploma);
+
+        calculMedie();
+    }
+
+    public void calculMedie(){
+        Integer nota1 = 8;
+        Integer nota2 = 9;
+        Integer nota3 = 10;
+        Integer media = (nota1 + nota2 + nota3)/3;
+
+        System.out.println("Media studentului este: " + media);
+
+    }
 
 
 }
