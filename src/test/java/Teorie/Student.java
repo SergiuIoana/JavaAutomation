@@ -1,4 +1,4 @@
-package VariabilaMetoda;
+package Teorie;
 
 import org.testng.annotations.Test;
 
