@@ -51,6 +51,7 @@ public class Student {
         System.out.println("Are studentul diploma? " + AreDiploma);
 
         calculMedie();
+        System.out.println(getSalariu());
     }
 
     public void calculMedie(){
@@ -62,6 +63,13 @@ public class Student {
         System.out.println("Media studentului este: " + media);
 
     }
+
+    //Metoda cu return
+    public Integer getSalariu() {
+       Integer salariu = 5000;
+       return salariu;
+    }
+
 
 
 }

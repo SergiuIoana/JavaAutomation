@@ -11,11 +11,12 @@ public class StructuriAlternative {
         //metodaVerificareNumar(7);
         //metodaVerificareNumar(3);
         //metodaVerificareNumar(5);
-        metodaVerificareNumarParPozitiv(0);
-        metodaVerificareNumarParPozitiv(4);
-        metodaVerificareNumarParPozitiv(3);
-        metodaVerificareNumarParPozitiv(-1);
-        metodaVerificareNumarParPozitiv(-8);
+        //metodaVerificareNumarParPozitiv(0);
+        //metodaVerificareNumarParPozitiv(4);
+        //metodaVerificareNumarParPozitiv(3);
+        //metodaVerificareNumarParPozitiv(-1);
+        //metodaVerificareNumarParPozitiv(-8);
+        zileSaptamana(0);
     }
 
     // Verificam un numar mai mare decat 5
@@ -58,4 +59,32 @@ public class StructuriAlternative {
 
     }
 
+    //Exemplu switch case
+    public void zileSaptamana(Integer zi) {
+        switch (zi) {
+            case 1:
+                System.out.println("Astazi este Luni");
+                break;
+            case 2:
+                System.out.println("Astazi este Marti");
+                break;
+            case 3:
+                System.out.println("Astazi este Miercuri");
+                break;
+            case 4 :
+                System.out.println("Astazi este Joi");
+                break;
+            case 5:
+                System.out.println("Astazi este Vineri");
+                break;
+            case 6:
+                System.out.println("Astazi este Sambata");
+                break;
+            case 7:
+                System.out.println("Astazi este Duminica");
+                break;
+            default:
+                System.out.println(("Nu mai sunt zile"));
+        }
+    }
 }

@@ -1,9 +1,6 @@
 package ProjectAutomation;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
@@ -60,18 +57,32 @@ public class PracticeFormTest {
         WebElement genderFemaleElement = driver.findElement(By.xpath("//label[@for='gender-radio-2']"));
         WebElement genderOtherElement = driver.findElement(By.xpath("//label[@for='gender-radio-3']"));
 
-        String gender = "Male";
-
-        if(gender.equals("Male")){
+        String Gender = "Male";
+        if(genderMaleElement.getText().equals(Gender)) {
             genderMaleElement.click();
         }
-
-        else if(gender.equals("Female")){
+        else if(genderFemaleElement.getText().equals(Gender)){
             genderFemaleElement.click();
         }
-        else if(gender.equals("Other")){
+        else if(genderOtherElement.getText().equals(Gender)){
             genderOtherElement.click();
         }
 
+        WebElement SubjectsElement = driver.findElement(By.id("subjectsInput"));
+        String SubjectsValue = "Social Studies";
+        SubjectsElement.sendKeys(SubjectsValue);
+        SubjectsElement.sendKeys(Keys.ENTER);
+
+        WebElement StateElement = driver.findElement(By.id("react-select-3-input"));
+        js.executeScript("arguments[0].click();", StateElement);
+        StateElement.sendKeys("NCR");
+        StateElement.sendKeys(Keys.ENTER);
+
+        WebElement CityElement = driver.findElement(By.id("react-select-4-input"));
+        js.executeScript("arguments[0].click();", CityElement);
+        CityElement.sendKeys("Delhi");
+        CityElement.sendKeys(Keys.ENTER);
     }
+
+
 }
