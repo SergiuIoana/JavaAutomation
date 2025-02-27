@@ -82,6 +82,10 @@ public class PracticeFormTest {
         js.executeScript("arguments[0].click();", CityElement);
         CityElement.sendKeys("Delhi");
         CityElement.sendKeys(Keys.ENTER);
+
+        WebElement submitElement = driver.findElement(By.id("submit"));
+        js.executeScript("arguments[0].click();", submitElement);
+
     }
 
 
