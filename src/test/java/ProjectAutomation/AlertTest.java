@@ -1,5 +1,7 @@
 package ProjectAutomation;
 
+import HelperMethods.AlertMethods;
+import HelperMethods.ElementsMethods;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,6 +14,8 @@ import static org.testng.AssertJUnit.assertEquals;
 
 public class AlertTest {
     public WebDriver driver;
+    public ElementsMethods elementsMethods;
+    public AlertMethods alertMethods;
 
     @Test
     public void automationMethod() {
@@ -28,36 +32,46 @@ public class AlertTest {
         //Facem browse-ul in modul maximize
         driver.manage().window().maximize();
 
+        // Initializare obiect
+        elementsMethods = new ElementsMethods(driver);
+        alertMethods = new AlertMethods(driver);
+
         //Facem un scroll
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,400);");
 
         //Declaram un element
         WebElement alertFrameWindowElement = driver.findElement(By.xpath("//h5[contains(text(),'Alerts, Frame & Windows')]"));
-        alertFrameWindowElement.click();
+        //alertFrameWindowElement.click();
+        elementsMethods.clickOnElements(alertFrameWindowElement);
 
         WebElement alertElement = driver.findElement(By.xpath("//span[contains(text(),'Alerts')]"));
-        alertElement.click();
+        //alertElement.click();
+        elementsMethods.clickOnElements(alertElement);
 
         WebElement alertOkElement = driver.findElement(By.id("alertButton"));
-        alertOkElement.click();
+        //alertOkElement.click();
+        elementsMethods.clickOnElements(alertOkElement);
 
         //Alert
-        Alert alertOk = driver.switchTo().alert();
+        //Alert alertOk = driver.switchTo().alert();
         //ne mutam cu focusul pe alerta
-        alertOk.accept();
+        //alertOk.accept();
+        alertMethods.interractWithAlertsOK();
 
         // Alert delay
         WebElement alertDelayOkElement = driver.findElement(By.id("timerAlertButton"));
-        alertDelayOkElement.click();
+        //alertDelayOkElement.click();
+        elementsMethods.clickOnElements(alertDelayOkElement);
 
         //Definim un wait explicit ca sa astepte dupa alerta
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
-        wait.until(ExpectedConditions.alertIsPresent());
+        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
+        //wait.until(ExpectedConditions.alertIsPresent());
 
-        Alert alertDelayOk = driver.switchTo().alert();
+        //Alert alertDelayOk = driver.switchTo().alert();
         //ne mutam cu focusul pe alerta
-        alertDelayOk.accept();
+        //alertDelayOk.accept();
+        alertMethods.interractWithAlertsOK();
 
         //Alert confirmation
         WebElement alertConfirmationElement = driver.findElement(By.id("confirmButton"));
@@ -68,7 +82,7 @@ public class AlertTest {
 
         //Assert the Cancel message
         WebElement cancelElement = driver.findElement(By.id("confirmResult"));
-        assertEquals(cancelElement.getText(), "You selected Cancel");
+        assertEquals("You selected Cancel", cancelElement.getText());
 
         //Alert Promt
         WebElement alertPromtElement = driver.findElement(By.id("promtButton"));
@@ -78,6 +92,5 @@ public class AlertTest {
         alertPromt.sendKeys("Sergiu");
         alertPromt.accept();
 
-
     }
-    }
+}

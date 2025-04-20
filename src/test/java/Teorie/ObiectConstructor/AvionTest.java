@@ -1,4 +1,4 @@
-package ObiectConstructor;
+package Teorie.ObiectConstructor;
 
 import org.testng.annotations.Test;
 

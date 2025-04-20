@@ -1,4 +1,4 @@
-package Multimi;
+package Teorie.Multimi;
 
 import org.testng.annotations.Test;
 
