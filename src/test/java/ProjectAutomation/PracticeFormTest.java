@@ -4,6 +4,7 @@ import HelperMethods.ElementsMethods;
 import HelperMethods.JavascriptHelpers;
 import Pages.CommonPage;
 import Pages.HomePage;
+import Pages.PracticeFormPage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
@@ -19,6 +20,7 @@ public class PracticeFormTest {
     public JavascriptHelpers javascriptHelpers;
     public HomePage homePage;
     public CommonPage commonPage;
+    public PracticeFormPage practiceFormPage;
 
     @Test
     public void automationMethod() {
@@ -37,6 +39,7 @@ public class PracticeFormTest {
         javascriptHelpers = new JavascriptHelpers(driver);
         homePage = new HomePage(driver);
         commonPage = new CommonPage(driver);
+        practiceFormPage = new PracticeFormPage(driver);
 
         //Facem un scroll
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -54,8 +57,23 @@ public class PracticeFormTest {
         //elementsMethods.clickOnElements(webTablesField);
 
         commonPage.goToDesiredSubMenu("Practice Form");
+        practiceFormPage.completeFirstRegion("Sergiu","Ioana","sergiu.ioana@endava.com","Tg Mures", "0741111111" );
+        practiceFormPage.completeGender("Male");
+        //Un singur subiect selectat
+        //practiceFormPage.completeSubject("Maths");
+        //Mai multe subiecte selectate din lista
+        List<String> subject = new ArrayList<>();
+        subject.add("Maths");
+        subject.add("English");
+        practiceFormPage.completeSubjectWithList(subject);
+        List<String> hobbies = new ArrayList<>();
+        hobbies.add("Sports");
+        hobbies.add("Music");
+        hobbies.add("Reading");
+        practiceFormPage.completeHobies(hobbies);
 
-        WebElement firstNameElement = driver.findElement(By.id("firstName"));
+
+      /*  WebElement firstNameElement = driver.findElement(By.id("firstName"));
         //String firstNameValue = "Sergiu";
         //firstNameElement.sendKeys(firstNameValue);
         elementsMethods.fillElement(firstNameElement, "Sergiu");
@@ -89,7 +107,7 @@ public class PracticeFormTest {
         genderElement.add(genderOtherElement);
         elementsMethods.selectElementFromListByText(genderElement, "Male");
 
-    /*    String Gender = "Male";
+    *//*    String Gender = "Male";
         if(genderMaleElement.getText().equals(Gender)) {
             genderMaleElement.click();
         }
@@ -99,14 +117,14 @@ public class PracticeFormTest {
         else if(genderOtherElement.getText().equals(Gender)){
             genderOtherElement.click();
         }
-    */
+    *//*
 
         WebElement SubjectsElement = driver.findElement(By.id("subjectsInput"));
         String SubjectsValue = "Social Studies";
         SubjectsElement.sendKeys(SubjectsValue);
         SubjectsElement.sendKeys(Keys.ENTER);
 
-  /*    WebElement StateElement = driver.findElement(By.id("react-select-3-input"));
+  *//*    WebElement StateElement = driver.findElement(By.id("react-select-3-input"));
         js.executeScript("arguments[0].click();", StateElement);
         StateElement.sendKeys("NCR");
         StateElement.sendKeys(Keys.ENTER);
@@ -118,8 +136,9 @@ public class PracticeFormTest {
 
         WebElement submitElement = driver.findElement(By.id("submit"));
         js.executeScript("arguments[0].click();", submitElement);
-*/
+*//*
     }
 
-
+*/
+    }
 }
