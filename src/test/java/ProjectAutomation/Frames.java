@@ -1,5 +1,10 @@
 package ProjectAutomation;
 
+import HelperMethods.ElementsMethods;
+import HelperMethods.FramesMethods;
+import HelperMethods.JavascriptHelpers;
+import Pages.CommonPage;
+import Pages.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +14,11 @@ import org.testng.annotations.Test;
 
 public class Frames {
     public WebDriver driver;
+    public JavascriptHelpers javascriptHelpers;
+    public ElementsMethods elementsMethods;
+    public FramesMethods framesMethods;
+    public HomePage homePage;
+    public CommonPage commonPage;
 
     @Test
     public void automationMethod() {
@@ -22,28 +32,45 @@ public class Frames {
         //Facem browse-ul in modul maximize
         driver.manage().window().maximize();
 
+        //Initializare obiect
+        javascriptHelpers = new JavascriptHelpers(driver);
+        elementsMethods = new ElementsMethods(driver);
+        framesMethods = new FramesMethods(driver);
+        homePage = new HomePage(driver);
+        commonPage = new CommonPage(driver);
+
         //Facem un scroll
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,400);");
 
         //Declaram un element
-        WebElement alertFrameWindowElement = driver.findElement(By.xpath("//h5[contains(text(),'Alerts, Frame & Windows')]"));
-        alertFrameWindowElement.click();
+        //WebElement alertFrameWindowElement = driver.findElement(By.xpath("//h5[contains(text(),'Alerts, Frame & Windows')]"));
+        //alertFrameWindowElement.click();
+        //elementsMethods.clickOnElements(alertFrameWindowElement);
+        homePage.goToDesiredMenu("Alerts, Frame & Windows");
 
-        WebElement frameElement = driver.findElement(By.xpath("//span[contains(text(),'Frames')]"));
-        frameElement.click();
+        //WebElement frameElement = driver.findElement(By.xpath("//span[contains(text(),'Frames')]"));
+        //frameElement.click();
+        //elementsMethods.clickOnElements(frameElement);
+        commonPage.goToDesiredSubMenu("Frames");
+
+        //Scroll down din JavaHelpersMethods
+        javascriptHelpers.scrollDown(400);
 
         WebElement frame1Element = driver.findElement(By.id("frame1"));
-        driver.switchTo().frame(frame1Element);
+        //driver.switchTo().frame(frame1Element);
+        framesMethods.switchToFrame(frame1Element);
 
         WebElement sampleHeadingFrameElement = driver.findElement(By.id("sampleHeading"));
         System.out.println("Textul din new frame este : " + sampleHeadingFrameElement.getText());
 
         // Ne ducem cu focusul inapoi pe pagina principala
-        driver.switchTo().defaultContent();
+        //driver.switchTo().defaultContent();
+        framesMethods.switchToMainContent();
 
         WebElement frame2Element = driver.findElement(By.id("frame2"));
-        driver.switchTo().frame(frame2Element);
+        //driver.switchTo().frame(frame2Element);
+        framesMethods.switchToFrame(frame2Element);
 
         //Scroll
         js.executeScript("window.scrollBy(200,400);");

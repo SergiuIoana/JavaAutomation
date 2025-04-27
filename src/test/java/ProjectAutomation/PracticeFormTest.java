@@ -1,6 +1,9 @@
 package ProjectAutomation;
 
 import HelperMethods.ElementsMethods;
+import HelperMethods.JavascriptHelpers;
+import Pages.CommonPage;
+import Pages.HomePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
@@ -13,6 +16,9 @@ public class PracticeFormTest {
 
     public WebDriver driver;
     public ElementsMethods elementsMethods;
+    public JavascriptHelpers javascriptHelpers;
+    public HomePage homePage;
+    public CommonPage commonPage;
 
     @Test
     public void automationMethod() {
@@ -28,19 +34,26 @@ public class PracticeFormTest {
 
         // Initializare obiect
         elementsMethods = new ElementsMethods(driver);
+        javascriptHelpers = new JavascriptHelpers(driver);
+        homePage = new HomePage(driver);
+        commonPage = new CommonPage(driver);
 
         //Facem un scroll
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,400);");
+        javascriptHelpers.scrollDown(400);
 
         //Declaram un element
-        WebElement elementsField = driver.findElement(By.xpath("//h5[contains(text(),'Forms')]"));
+        //WebElement elementsField = driver.findElement(By.xpath("//h5[contains(text(),'Forms')]"));
         // elementsField.click();
-        elementsMethods.clickOnElements(elementsField);
+        //elementsMethods.clickOnElements(elementsField);
+        homePage.goToDesiredMenu("Forms");
 
-        WebElement webTablesField = driver.findElement(By.xpath("//span[contains(text(),'Practice Form')]"));
-        // webTablesField.click();
-        elementsMethods.clickOnElements(webTablesField);
+        //WebElement webTablesField = driver.findElement(By.xpath("//span[contains(text(),'Practice Form')]"));
+        //webTablesField.click();
+        //elementsMethods.clickOnElements(webTablesField);
+
+        commonPage.goToDesiredSubMenu("Practice Form");
 
         WebElement firstNameElement = driver.findElement(By.id("firstName"));
         //String firstNameValue = "Sergiu";
@@ -93,7 +106,7 @@ public class PracticeFormTest {
         SubjectsElement.sendKeys(SubjectsValue);
         SubjectsElement.sendKeys(Keys.ENTER);
 
-        WebElement StateElement = driver.findElement(By.id("react-select-3-input"));
+  /*    WebElement StateElement = driver.findElement(By.id("react-select-3-input"));
         js.executeScript("arguments[0].click();", StateElement);
         StateElement.sendKeys("NCR");
         StateElement.sendKeys(Keys.ENTER);
@@ -105,7 +118,7 @@ public class PracticeFormTest {
 
         WebElement submitElement = driver.findElement(By.id("submit"));
         js.executeScript("arguments[0].click();", submitElement);
-
+*/
     }
 
 

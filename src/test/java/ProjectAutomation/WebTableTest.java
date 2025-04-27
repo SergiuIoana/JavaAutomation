@@ -1,5 +1,7 @@
 package ProjectAutomation;
 
+import Pages.CommonPage;
+import Pages.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +15,8 @@ import java.util.List;
 public class WebTableTest {
 
     public WebDriver driver;
+    public HomePage homePage;
+    public CommonPage commonPage;
 
     @Test
     public void automationMethod(){
@@ -25,6 +29,10 @@ public class WebTableTest {
 
         //Facem browse-ul in modul maximize
         driver.manage().window().maximize();
+
+        // Initializare obiect
+        homePage = new HomePage(driver);
+        commonPage = new CommonPage(driver);
 
         //Cautare elemente in UI se face dupa :
         // 1.Id
@@ -41,11 +49,13 @@ public class WebTableTest {
         //(0,400) reprezinte coordonatele de pe un site X si Y
 
         //Declaram un element
-        WebElement ElementsField = driver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]"));
-        ElementsField.click();
+        //WebElement ElementsField = driver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]"));
+        //ElementsField.click();
+        homePage.goToDesiredMenu("Elements");
 
-        WebElement WebTablesField = driver.findElement(By.xpath("//span[contains(text(),'Web Tables')]"));
-        WebTablesField.click();
+        //WebElement WebTablesField = driver.findElement(By.xpath("//span[contains(text(),'Web Tables')]"));
+        //WebTablesField.click();
+        commonPage.goToDesiredSubMenu("Web Tables");
 
         List<WebElement> tableElements = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']"));
         Integer actualTableSize = tableElements.size();
