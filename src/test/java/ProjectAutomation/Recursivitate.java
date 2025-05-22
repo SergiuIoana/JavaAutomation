@@ -1,5 +1,6 @@
 package ProjectAutomation;
 
+import ShareData.ShareData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,7 +11,7 @@ import org.testng.annotations.Test;
 import javax.swing.*;
 import java.util.List;
 
-public class Recursivitate {
+public class Recursivitate extends ShareData {
 
     public WebDriver driver;
 
@@ -18,13 +19,13 @@ public class Recursivitate {
     public void parcurgereLista()
     {
         //Deschidem un browser de Chrome
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
 
         //Accesam o pagina web
-        driver.get("https://demoqa.com/");
+        //driver.get("https://demoqa.com/");
 
         //Facem browse-ul in modul maximize
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
         Actions actions = new Actions(driver);
 
        List<WebElement> list = driver.findElements(By.xpath("//div[@id='demo-tabpane-list']//div[@class='list-group-item list-group-item-action']"));

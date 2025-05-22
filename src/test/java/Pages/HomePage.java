@@ -9,22 +9,31 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class HomePage {
+public class HomePage extends CommonPage {
 
-    WebDriver driver;
-    ElementsMethods elementsMethods;
-    JavascriptHelpers javascriptHelpers;
+    //WebDriver driver;
+    //ElementsMethods elementsMethods;
+    //JavascriptHelpers javascriptHelpers;
 
+    @FindBy(xpath = "//p[text()='Consent']")
+    private WebElement consentElement;
+
+   /*
     public HomePage(WebDriver driver) {
         this.driver = driver;
         elementsMethods = new ElementsMethods(driver);
-        javascriptHelpers = new JavascriptHelpers(driver);
-        PageFactory.initElements(driver, this);
+       javascriptHelpers = new JavascriptHelpers(driver);
+       PageFactory.initElements(driver, this);
     }
+   */
 
     // Identificam WebElementele specifice pentru pagina
     @FindBy(xpath = "//h5")
-    List<WebElement> elements;
+    private List<WebElement> elements;
+
+    public HomePage(WebDriver driver) {
+        super(driver);
+    }
 
     // Facem metode specifice pentru pagina
     public void goToDesiredMenu(String menu){

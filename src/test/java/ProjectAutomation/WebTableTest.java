@@ -2,6 +2,7 @@ package ProjectAutomation;
 
 import Pages.CommonPage;
 import Pages.HomePage;
+import ShareData.ShareData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +13,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class WebTableTest {
+public class WebTableTest extends ShareData {
 
     public WebDriver driver;
     public HomePage homePage;
@@ -22,13 +23,13 @@ public class WebTableTest {
     public void automationMethod(){
 
         //Deschidem un browser de Chrome
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
 
         //Accesam o pagina web
-        driver.get("https://demoqa.com/");
+        //driver.get("https://demoqa.com/");
 
         //Facem browse-ul in modul maximize
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
 
         // Initializare obiect
         homePage = new HomePage(driver);

@@ -24,7 +24,7 @@ public class CommonPage {
 
     // Identificam WebElementele specifice pentru sub-pagini
     @FindBy(xpath = "//span[@class='text']")
-    List<WebElement> elements;
+    private List<WebElement> elements;
 
     // Facem metode specifice pentru subpagina
     public void goToDesiredSubMenu(String submenu){

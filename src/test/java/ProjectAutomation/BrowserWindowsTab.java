@@ -3,6 +3,7 @@ package ProjectAutomation;
 import HelperMethods.WindowsMethods;
 import Pages.CommonPage;
 import Pages.HomePage;
+import ShareData.ShareData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +14,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BrowserWindowsTab {
+public class BrowserWindowsTab extends ShareData {
 
     public WebDriver driver;
     public WindowsMethods windowsMethods;
@@ -24,13 +25,13 @@ public class BrowserWindowsTab {
     public void automationMethod() {
 
         //Deschidem un browser de Chrome
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
 
         //Accesam o pagina web
-        driver.get("https://demoqa.com/");
+        //driver.get("https://demoqa.com/");
 
         //Facem browse-ul in modul maximize
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
 
         //Initializare obiect
         windowsMethods = new WindowsMethods(driver);

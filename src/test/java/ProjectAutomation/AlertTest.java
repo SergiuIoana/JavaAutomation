@@ -5,6 +5,7 @@ import HelperMethods.ElementsMethods;
 import HelperMethods.JavascriptHelpers;
 import Pages.CommonPage;
 import Pages.HomePage;
+import ShareData.ShareData;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
@@ -13,8 +14,8 @@ import java.time.Duration;
 
 import static org.testng.AssertJUnit.assertEquals;
 
-public class AlertTest {
-    public WebDriver driver;
+public class AlertTest extends ShareData {
+    //public WebDriver driver;
     public ElementsMethods elementsMethods;
     public AlertMethods alertMethods;
     public JavascriptHelpers javascriptHelpers;
@@ -25,26 +26,26 @@ public class AlertTest {
     public void automationMethod() {
 
         //Deschidem un browser de Chrome
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
 
         //Accesam o pagina web
-        driver.get("https://demoqa.com/");
+        //driver.get("https://demoqa.com/");
 
         //Definim un wait implicit pentru un interval maxim de timp
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
 
         //Facem browse-ul in modul maximize
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
 
         // Initializare obiect
-        elementsMethods = new ElementsMethods(driver);
-        alertMethods = new AlertMethods(driver);
-        javascriptHelpers = new JavascriptHelpers(driver);
-        homePage = new HomePage(driver);
-        commonPage = new CommonPage(driver);
+        elementsMethods = new ElementsMethods(getDriver());
+        alertMethods = new AlertMethods(getDriver());
+        javascriptHelpers = new JavascriptHelpers(getDriver());
+        homePage = new HomePage(getDriver());
+        commonPage = new CommonPage(getDriver());
 
         //Facem un scroll
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("window.scrollBy(0,400);");
 
         //Declaram un element
@@ -58,7 +59,7 @@ public class AlertTest {
         //elementsMethods.clickOnElements(alertElement);
         commonPage.goToDesiredSubMenu("Alerts");
 
-        WebElement alertOkElement = driver.findElement(By.id("alertButton"));
+        WebElement alertOkElement = getDriver().findElement(By.id("alertButton"));
         //alertOkElement.click();
         elementsMethods.clickOnElements(alertOkElement);
 
@@ -69,7 +70,7 @@ public class AlertTest {
         alertMethods.interactWithAlertsOK();
 
         // Alert delay
-        WebElement alertDelayOkElement = driver.findElement(By.id("timerAlertButton"));
+        WebElement alertDelayOkElement = getDriver().findElement(By.id("timerAlertButton"));
         //alertDelayOkElement.click();
         elementsMethods.clickOnElements(alertDelayOkElement);
 
@@ -83,7 +84,7 @@ public class AlertTest {
         alertMethods.interactWithDelayAlert();
 
         //Alert confirmation
-        WebElement alertConfirmationElement = driver.findElement(By.id("confirmButton"));
+        WebElement alertConfirmationElement = getDriver().findElement(By.id("confirmButton"));
         //alertConfirmationElement.click();
         elementsMethods.clickOnElements(alertConfirmationElement);
 
@@ -92,11 +93,11 @@ public class AlertTest {
         alertMethods.alertMessageDismiss();
 
         //Assert the Cancel message
-        WebElement cancelElement = driver.findElement(By.id("confirmResult"));
+        WebElement cancelElement = getDriver().findElement(By.id("confirmResult"));
         assertEquals("You selected Cancel", cancelElement.getText());
 
         //Alert Promt
-        WebElement alertPromtElement = driver.findElement(By.id("promtButton"));
+        WebElement alertPromtElement = getDriver().findElement(By.id("promtButton"));
         //alertPromtElement.click();
         elementsMethods.clickOnElements(alertPromtElement);
 
@@ -107,7 +108,7 @@ public class AlertTest {
         alertMethods.interactWithInputAlerts("Sergiu");
 
         //Assert the text entered
-        WebElement alertPromptResult = driver.findElement(By.id("promptResult"));
+        WebElement alertPromptResult = getDriver().findElement(By.id("promptResult"));
         assertEquals("You entered Sergiu", alertPromptResult.getText() );
     }
 }

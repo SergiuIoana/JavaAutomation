@@ -5,6 +5,7 @@ import HelperMethods.JavascriptHelpers;
 import Pages.CommonPage;
 import Pages.HomePage;
 import Pages.PracticeFormPage;
+import ShareData.ShareData;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
@@ -13,9 +14,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PracticeFormTest {
+public class PracticeFormTest extends ShareData {
 
-    public WebDriver driver;
+    //public WebDriver driver;
     public ElementsMethods elementsMethods;
     public JavascriptHelpers javascriptHelpers;
     public HomePage homePage;
@@ -26,23 +27,23 @@ public class PracticeFormTest {
     public void automationMethod() {
 
         //Deschidem un browser de Chrome
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
 
         //Accesam o pagina web
-        driver.get("https://demoqa.com/");
+        //driver.get("https://demoqa.com/");
 
         //Facem browse-ul in modul maximize
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
 
         // Initializare obiect
-        elementsMethods = new ElementsMethods(driver);
-        javascriptHelpers = new JavascriptHelpers(driver);
-        homePage = new HomePage(driver);
-        commonPage = new CommonPage(driver);
-        practiceFormPage = new PracticeFormPage(driver);
+        //elementsMethods = new ElementsMethods(driver);
+        //javascriptHelpers = new JavascriptHelpers(driver);
+        homePage = new HomePage(getDriver());
+        commonPage = new CommonPage(getDriver());
+        practiceFormPage = new PracticeFormPage(getDriver());
 
         //Facem un scroll
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("window.scrollBy(0,400);");
         javascriptHelpers.scrollDown(400);
 

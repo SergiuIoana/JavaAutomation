@@ -10,50 +10,54 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PracticeFormPage {
+public class PracticeFormPage extends CommonPage{
 
+    /*
     WebDriver driver;
-
     ElementsMethods elementsMethods;
-
-    public PracticeFormPage(WebDriver driver){
-        this.driver = driver;
-        elementsMethods = new ElementsMethods(driver);
+     public PracticeFormPage(WebDriver driver){
+         this.driver = driver;
+         elementsMethods = new ElementsMethods(driver);
         PageFactory.initElements(driver, this);
-    }
+     }
+    */
 
     @FindBy (id="firstName")
-    WebElement firstNameElement;
+    private WebElement firstNameElement;
     @FindBy (id="lastName")
-    WebElement lastNameElement;
+    private WebElement lastNameElement;
     @FindBy (id="userEmail")
-    WebElement userEmailElement;
+    private WebElement userEmailElement;
     @FindBy (css = "input[placeholder='Mobile Number']")
-    WebElement mobileNumberElement;
+    private WebElement mobileNumberElement;
     @FindBy (id = "uploadPicture")
-    WebElement pictureElement;
+    private WebElement pictureElement;
     @FindBy(xpath = "//label[@for='gender-radio-1']")
-    WebElement genderMaleElement;
+    private WebElement genderMaleElement;
     @FindBy(xpath = "//label[@for='gender-radio-2']")
-    WebElement genderFemaleElement;
+    private WebElement genderFemaleElement;
     @FindBy(xpath = "//label[@for='gender-radio-3']")
-    WebElement genderOtherElement;
+    private WebElement genderOtherElement;
     @FindBy(id = "currentAddress")
-    WebElement addressElement;
+    private WebElement addressElement;
     @FindBy(xpath = "react-select-3-input")
-    WebElement stateElement;
+    private WebElement stateElement;
     @FindBy(id = "react-select-4-input")
-    WebElement cityElement;
+    private WebElement cityElement;
     @FindBy(xpath = "//label[@for='hobbies-checkbox-1']")
-    WebElement sportHobbyElement;
+    private WebElement sportHobbyElement;
     @FindBy(xpath = "//label[@for='hobbies-checkbox-2']")
-    WebElement readingHobbyElement;
+    private WebElement readingHobbyElement;
     @FindBy(xpath = "//label[@for='hobbies-checkbox-3']")
-    WebElement musicHobbyElement;
+    private WebElement musicHobbyElement;
     //@FindBy(xpath = "//div[@id='subjectsContainer']")
     //WebElement subjectsElement;
     @FindBy(id = "subjectsInput")
-    WebElement subjectsElement;
+    private WebElement subjectsElement;
+
+    public PracticeFormPage(WebDriver driver) {
+        super(driver);
+    }
 
 
     public void completeFirstRegion (String firstName, String lastName, String email, String address, String mobileNo) {

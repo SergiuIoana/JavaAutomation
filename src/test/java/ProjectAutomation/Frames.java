@@ -5,6 +5,7 @@ import HelperMethods.FramesMethods;
 import HelperMethods.JavascriptHelpers;
 import Pages.CommonPage;
 import Pages.HomePage;
+import ShareData.ShareData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -12,8 +13,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class Frames {
-    public WebDriver driver;
+public class Frames extends ShareData {
+    //public WebDriver driver;
     public JavascriptHelpers javascriptHelpers;
     public ElementsMethods elementsMethods;
     public FramesMethods framesMethods;
@@ -24,23 +25,23 @@ public class Frames {
     public void automationMethod() {
 
         //Deschidem un browser de Chrome
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
 
         //Accesam o pagina web
-        driver.get("https://demoqa.com/");
+        //driver.get("https://demoqa.com/");
 
         //Facem browse-ul in modul maximize
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
 
         //Initializare obiect
-        javascriptHelpers = new JavascriptHelpers(driver);
-        elementsMethods = new ElementsMethods(driver);
-        framesMethods = new FramesMethods(driver);
-        homePage = new HomePage(driver);
-        commonPage = new CommonPage(driver);
+        javascriptHelpers = new JavascriptHelpers(getDriver());
+        elementsMethods = new ElementsMethods(getDriver());
+        framesMethods = new FramesMethods(getDriver());
+        homePage = new HomePage(getDriver());
+        commonPage = new CommonPage(getDriver());
 
         //Facem un scroll
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("window.scrollBy(0,400);");
 
         //Declaram un element
@@ -57,18 +58,18 @@ public class Frames {
         //Scroll down din JavaHelpersMethods
         javascriptHelpers.scrollDown(400);
 
-        WebElement frame1Element = driver.findElement(By.id("frame1"));
+        WebElement frame1Element = getDriver().findElement(By.id("frame1"));
         //driver.switchTo().frame(frame1Element);
         framesMethods.switchToFrame(frame1Element);
 
-        WebElement sampleHeadingFrameElement = driver.findElement(By.id("sampleHeading"));
+        WebElement sampleHeadingFrameElement = getDriver().findElement(By.id("sampleHeading"));
         System.out.println("Textul din new frame este : " + sampleHeadingFrameElement.getText());
 
         // Ne ducem cu focusul inapoi pe pagina principala
         //driver.switchTo().defaultContent();
         framesMethods.switchToMainContent();
 
-        WebElement frame2Element = driver.findElement(By.id("frame2"));
+        WebElement frame2Element = getDriver().findElement(By.id("frame2"));
         //driver.switchTo().frame(frame2Element);
         framesMethods.switchToFrame(frame2Element);
 
