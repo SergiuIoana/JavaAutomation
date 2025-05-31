@@ -14,6 +14,23 @@ public class Persoana {
     //private = access control care restricioneaza accesul doar in clasa respectiva
     //ca sa extragem/modificam o valoare a unei variabile private, ne folosim de metode get/set
 
+    //POLIMORFISM = procesul prin care definim mai multe implementari pentru o metoda
+    //poate fi de doua feluri: dinamic(OVERRIDE) si static(OVERLOAD)
+    //Polimorfismul dinamic = intr-o ierarhie de clase obtinute prin mostenire, o metoda poate avea implementari diferite
+    //Polimorfismul static = posibilitatea prin care o metoda are mai multe implementari prin diferentierea numarului sau tipului de parametrii
+
+    //ABSTRACTIZAREA = reducerea unui element complex la un element mai simplu (reducerea completa a implementarii metodelor, lasand doar numele functilor, parametrii si tipul returnat
+    //abstractizarea se poate obtine prin clase abstracte si/sau interfete
+    //clasele abstractizate sunt utilizate pentru a declara caracteristici comune unor subclase
+    //o clasa abtracta nu poate fi instantiata
+    //o clasa abstracta poate fi tuilizata doar ca si superclasa pentru alte clase care extind clasa abstracta
+    //clasa abstracta poate fi definita folosind modificatorul "abstract"
+    //o clasa abstracta poate contine atribute si metode pe langa clasa abstracta
+
+    //Interfata ofera raspuns lipsei mostemirii multiple
+    //interfata creeaza un protocol pe care clasele trebuie sa il implementeze
+    //interfata contine toate metodele abstracte ( e o clasa pur abstracta)
+
     private String nume;
     private String prenume;
     private Integer varsta;
@@ -29,6 +46,12 @@ public class Persoana {
         System.out.println("Numele este: " + nume);
         System.out.println("Prenume este: " + prenume);
         System.out.println("Varsta este: " + varsta);
+    }
+
+    //Definim prima implementare pentru o metoda (polimorfism dinamic)
+
+    public void mananca(){
+        System.out.println("Persoana mananca cand ii foame");
     }
 
     public String getNume() {
