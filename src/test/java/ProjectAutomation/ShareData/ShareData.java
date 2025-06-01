@@ -1,5 +1,7 @@
 package ProjectAutomation.ShareData;
 
+import configFile.ConfigFile;
+import configFile.configNode.ConfigurationNode;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -13,11 +15,13 @@ public class ShareData {
 
     @BeforeMethod
     public void prepareBrowser() {
+
+        ConfigurationNode configurationNode = ConfigFile.createConfigNode(ConfigurationNode.class);
         //Deschidem un browser de Chrome
         driver = new ChromeDriver();
 
         //Accesam o pagina web
-        driver.get("https://demoqa.com/");
+        driver.get(configurationNode.driverConfigNode.url);
 
         //Facem browse-ul in modul maximize
         driver.manage().window().maximize();
