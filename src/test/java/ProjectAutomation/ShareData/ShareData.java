@@ -1,5 +1,6 @@
 package ProjectAutomation.ShareData;
 
+import ProjectAutomation.ShareData.browser.BrowserFactory;
 import configFile.ConfigFile;
 import configFile.configNode.ConfigurationNode;
 import org.openqa.selenium.WebDriver;
@@ -16,16 +17,7 @@ public class ShareData {
     @BeforeMethod
     public void prepareBrowser() {
 
-        ConfigurationNode configurationNode = ConfigFile.createConfigNode(ConfigurationNode.class);
-        //Deschidem un browser de Chrome
-        driver = new ChromeDriver();
-
-        //Accesam o pagina web
-        driver.get(configurationNode.driverConfigNode.url);
-
-        //Facem browse-ul in modul maximize
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver = new BrowserFactory().getBrowseFactory();
     }
 
     @AfterMethod

@@ -1,5 +1,6 @@
 package ProjectAutomation.Pages;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,6 +35,11 @@ public class HomePage extends CommonPage {
 
     // Facem metode specifice pentru pagina
     public void goToDesiredMenu(String menu){
+        try {
+            elementsMethods.clickOnElements(consentElement);
+        } catch(NoSuchElementException ignored){
+
+        }
         //Scrolul asta nu merge nu stiu de ce
         //javascriptHelpers.scrollDown(400);
         elementsMethods.selectElementFromListByText(elements, menu);
