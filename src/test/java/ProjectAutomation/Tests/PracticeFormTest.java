@@ -1,11 +1,13 @@
 package ProjectAutomation.Tests;
 
+import ObjectData.PracticeFormObject;
 import ProjectAutomation.HelperMethods.ElementsMethods;
 import ProjectAutomation.HelperMethods.JavascriptHelpers;
 import ProjectAutomation.Pages.CommonPage;
 import ProjectAutomation.Pages.HomePage;
 import ProjectAutomation.Pages.PracticeFormPage;
 import ProjectAutomation.ShareData.ShareData;
+import PropertyUtility.PropertyUtility;
 import org.openqa.selenium.*;
 import org.testng.annotations.Test;
 
@@ -17,9 +19,12 @@ public class PracticeFormTest extends ShareData {
     //public WebDriver driver;
     public ElementsMethods elementsMethods;
     public JavascriptHelpers javascriptHelpers;
+
+    PropertyUtility propertyUtility = new PropertyUtility("PracticeFormTest");
+    PracticeFormObject practiceFormObject = new PracticeFormObject(propertyUtility.getData());
+    public PracticeFormPage practiceFormPage;
     public HomePage homePage;
     public CommonPage commonPage;
-    public PracticeFormPage practiceFormPage;
 
     @Test
     public void automationMethod() {
@@ -36,6 +41,7 @@ public class PracticeFormTest extends ShareData {
         // Initializare obiect
         //elementsMethods = new ElementsMethods(driver);
         //javascriptHelpers = new JavascriptHelpers(driver);
+        JavascriptHelpers javascriptHelpers = new JavascriptHelpers(getDriver());
         homePage = new HomePage(getDriver());
         commonPage = new CommonPage(getDriver());
         practiceFormPage = new PracticeFormPage(getDriver());
@@ -56,20 +62,21 @@ public class PracticeFormTest extends ShareData {
         //elementsMethods.clickOnElements(webTablesField);
 
         commonPage.goToDesiredSubMenu("Practice Form");
-        practiceFormPage.completeFirstRegion("Sergiu","Ioana","sergiu.ioana@endava.com","Tg Mures", "0741111111" );
-        practiceFormPage.completeGender("Male");
+        practiceFormPage.completeFirstRegion(practiceFormObject);
+        practiceFormPage.completeGender(practiceFormObject);
         //Un singur subiect selectat
         //practiceFormPage.completeSubject("Maths");
         //Mai multe subiecte selectate din lista
-        List<String> subject = new ArrayList<>();
-        subject.add("Maths");
-        subject.add("English");
-        practiceFormPage.completeSubjectWithList(subject);
-        List<String> hobbies = new ArrayList<>();
-        hobbies.add("Sports");
-        hobbies.add("Music");
-        hobbies.add("Reading");
-        practiceFormPage.completeHobies(hobbies);
+        //List<String> subject = new ArrayList<>();
+        //subject.add("Maths");
+        //subject.add("English");
+        practiceFormPage.completeSubjectWithList(practiceFormObject);
+        //List<String> hobbies = new ArrayList<>();
+        //hobbies.add("Sports");
+        //hobbies.add("Music");
+        //hobbies.add("Reading");
+        practiceFormPage.completeHobies(practiceFormObject);
+        practiceFormPage.completeState(practiceFormObject);
 
 
       /*  WebElement firstNameElement = driver.findElement(By.id("firstName"));

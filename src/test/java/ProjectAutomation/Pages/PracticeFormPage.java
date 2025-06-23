@@ -1,5 +1,6 @@
 package ProjectAutomation.Pages;
 
+import ObjectData.PracticeFormObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -57,16 +58,16 @@ public class PracticeFormPage extends CommonPage{
     }
 
 
-    public void completeFirstRegion (String firstName, String lastName, String email, String address, String mobileNo) {
-        elementsMethods.fillElement(firstNameElement, firstName);
-        elementsMethods.fillElement(lastNameElement, lastName);
-        elementsMethods.fillElement(userEmailElement, email);
-        elementsMethods.fillElement(addressElement, address);
-        elementsMethods.fillElement(mobileNumberElement, mobileNo);
+    public void completeFirstRegion (PracticeFormObject practiceFormObject) {
+        elementsMethods.fillElement(firstNameElement, practiceFormObject.getFirstName());
+        elementsMethods.fillElement(lastNameElement, practiceFormObject.getLastName());
+        elementsMethods.fillElement(userEmailElement, practiceFormObject.getEmail());
+        elementsMethods.fillElement(addressElement, practiceFormObject.getAddress());
+        elementsMethods.fillElement(mobileNumberElement, practiceFormObject.getMobileNo());
     }
 
-    public void completeGender (String gender) {
-        switch (gender) {
+    public void completeGender (PracticeFormObject practiceFormObject) {
+        switch (practiceFormObject.getGender()) {
             case "Male":
                 genderMaleElement.click();
                 break;
@@ -84,17 +85,28 @@ public class PracticeFormPage extends CommonPage{
         elementsMethods.fillWithActions(subjectsElement,subject);
     }
 
-    public void completeSubjectWithList (List<String> list){
+    public void completeSubjectWithList (PracticeFormObject practiceFormObject){
         elementsMethods.clickOnElements(subjectsElement);
-        elementsMethods.fillMultipleValues(subjectsElement, list);
+        elementsMethods.fillMultipleValues(subjectsElement, practiceFormObject.getSubjects());
     }
 
-    public void completeHobies (List<String> hobies){
+    public void completeHobies (PracticeFormObject practiceFormObject){
         List<WebElement> hobiesElement = new ArrayList<>();
         hobiesElement.add(sportHobbyElement);
         hobiesElement.add(musicHobbyElement);
         hobiesElement.add(readingHobbyElement);
-        elementsMethods.clickMultipleElementsByListOfValues(hobiesElement,hobies);
+        elementsMethods.clickMultipleElementsByListOfValues(hobiesElement, practiceFormObject.getHobbies());
+    }
+
+    public void completeState(PracticeFormObject practiceFormObject){
+        //javascriptHelpers.forceClick((stateElement));
+        elementsMethods.clickOnElements(stateElement);
+        elementsMethods.waitVisibilityElement(stateElement);
+        elementsMethods.fillWithActions(stateElement, practiceFormObject.getState());
+        //javascriptHelpers.forceClick(cityElement);
+        elementsMethods.clickOnElements(cityElement);
+        elementsMethods.waitVisibilityElement(cityElement);
+        elementsMethods.fillWithActions(cityElement,practiceFormObject.getCity());
     }
 
 }
