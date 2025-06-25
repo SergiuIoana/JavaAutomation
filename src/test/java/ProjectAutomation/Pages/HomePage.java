@@ -1,5 +1,6 @@
 package ProjectAutomation.Pages;
 
+import logger.LoggerUtility;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,12 +38,15 @@ public class HomePage extends CommonPage {
     public void goToDesiredMenu(String menu){
         try {
             elementsMethods.clickOnElements(consentElement);
+            LoggerUtility.infoLog("The user clicks on consentElement");
         } catch(NoSuchElementException ignored){
 
         }
-        //Scrolul asta nu merge nu stiu de ce
-        //javascriptHelpers.scrollDown(400);
+        javascriptHelpers.scrollDown(400);
+        LoggerUtility.infoLog("The user scrolls down the page");
+
         elementsMethods.selectElementFromListByText(elements, menu);
+        LoggerUtility.infoLog("The user selects from menu the option with the value: " + menu);
     }
 
 

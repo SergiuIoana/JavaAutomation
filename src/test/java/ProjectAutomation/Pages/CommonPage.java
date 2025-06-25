@@ -1,6 +1,7 @@
 package ProjectAutomation.Pages;
 
 
+import logger.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -37,8 +38,10 @@ public class CommonPage {
 
     // Facem metode specifice pentru subpagina
     public void goToDesiredSubMenu(String submenu){
-        //Scrolul asta nu merge nu stiu de ce
-        //javascriptHelpers.scrollDown(400);
+        javascriptHelpers.scrollDown(400);
+        LoggerUtility.infoLog("The user scrolls down the page");
+
         elementsMethods.selectElementFromListByText(elements, submenu);
+        LoggerUtility.infoLog("The user selects from submenu the option with the value: " + submenu);
     }
 }

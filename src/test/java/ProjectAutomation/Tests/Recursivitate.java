@@ -1,5 +1,6 @@
 package ProjectAutomation.Tests;
 
+import ProjectAutomation.ShareData.Hooks;
 import ProjectAutomation.ShareData.ShareData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class Recursivitate extends ShareData {
+public class Recursivitate extends Hooks {
 
     public WebDriver driver;
 

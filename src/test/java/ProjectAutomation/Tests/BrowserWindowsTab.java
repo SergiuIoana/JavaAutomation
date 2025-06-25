@@ -3,6 +3,7 @@ package ProjectAutomation.Tests;
 import ProjectAutomation.HelperMethods.WindowsMethods;
 import ProjectAutomation.Pages.CommonPage;
 import ProjectAutomation.Pages.HomePage;
+import ProjectAutomation.ShareData.Hooks;
 import ProjectAutomation.ShareData.ShareData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -13,7 +14,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BrowserWindowsTab extends ShareData {
+public class BrowserWindowsTab extends Hooks {
 
     public WebDriver driver;
     public WindowsMethods windowsMethods;

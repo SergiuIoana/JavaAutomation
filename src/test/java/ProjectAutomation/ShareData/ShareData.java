@@ -3,6 +3,7 @@ package ProjectAutomation.ShareData;
 import ProjectAutomation.ShareData.browser.BrowserFactory;
 import configFile.ConfigFile;
 import configFile.configNode.ConfigurationNode;
+import logger.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -14,15 +15,16 @@ public class ShareData {
 
     public WebDriver driver;
 
-    @BeforeMethod
     public void prepareBrowser() {
 
         driver = new BrowserFactory().getBrowseFactory();
+        LoggerUtility.infoLog("The browser was opened with success");
     }
 
-    @AfterMethod
     public void clearBrowser(){
+
         driver.quit();
+        LoggerUtility.infoLog("The browser was closed with success");
     }
 
     public WebDriver getDriver() {

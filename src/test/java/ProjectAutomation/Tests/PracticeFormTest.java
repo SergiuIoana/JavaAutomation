@@ -6,6 +6,7 @@ import ProjectAutomation.HelperMethods.JavascriptHelpers;
 import ProjectAutomation.Pages.CommonPage;
 import ProjectAutomation.Pages.HomePage;
 import ProjectAutomation.Pages.PracticeFormPage;
+import ProjectAutomation.ShareData.Hooks;
 import ProjectAutomation.ShareData.ShareData;
 import PropertyUtility.PropertyUtility;
 import org.openqa.selenium.*;
@@ -14,7 +15,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PracticeFormTest extends ShareData {
+public class PracticeFormTest extends Hooks {
 
     //public WebDriver driver;
     public ElementsMethods elementsMethods;

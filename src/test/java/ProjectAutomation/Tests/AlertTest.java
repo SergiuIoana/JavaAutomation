@@ -6,12 +6,13 @@ import ProjectAutomation.HelperMethods.JavascriptHelpers;
 import ProjectAutomation.Pages.CommonPage;
 import ProjectAutomation.Pages.HomePage;
 import ProjectAutomation.Pages.AlertsPage;
+import ProjectAutomation.ShareData.Hooks;
 import ProjectAutomation.ShareData.ShareData;
 import org.openqa.selenium.*;
 import org.testng.annotations.Test;
 import static org.testng.AssertJUnit.assertEquals;
 
-public class AlertTest extends ShareData {
+public class AlertTest extends Hooks {
     //public WebDriver driver;
     public ElementsMethods elementsMethods;
     public AlertMethods alertMethods;

@@ -5,13 +5,14 @@ import ProjectAutomation.HelperMethods.FramesMethods;
 import ProjectAutomation.HelperMethods.JavascriptHelpers;
 import ProjectAutomation.Pages.CommonPage;
 import ProjectAutomation.Pages.HomePage;
+import ProjectAutomation.ShareData.Hooks;
 import ProjectAutomation.ShareData.ShareData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-public class Frames extends ShareData {
+public class Frames extends Hooks {
     //public WebDriver driver;
     public JavascriptHelpers javascriptHelpers;
     public ElementsMethods elementsMethods;

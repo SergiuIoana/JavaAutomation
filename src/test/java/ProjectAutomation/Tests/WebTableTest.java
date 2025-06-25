@@ -2,6 +2,7 @@ package ProjectAutomation.Tests;
 
 import ProjectAutomation.Pages.CommonPage;
 import ProjectAutomation.Pages.HomePage;
+import ProjectAutomation.ShareData.Hooks;
 import ProjectAutomation.ShareData.ShareData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,7 +13,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class WebTableTest extends ShareData {
+public class WebTableTest extends Hooks {
 
     public WebDriver driver;
     public HomePage homePage;
