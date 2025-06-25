@@ -1,7 +1,9 @@
 package ProjectAutomation.ShareData;
 
 import logger.LoggerUtility;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 
 public class Hooks extends ShareData{
@@ -16,10 +18,18 @@ public class Hooks extends ShareData{
     }
 
     @AfterMethod
-    public void clearEnvironment(){
+    public void clearEnvironment(ITestResult result){
+        if (result.getStatus() == ITestResult.FAILURE){
+            LoggerUtility.errorLog(result.getThrowable().getMessage());
+        }
         clearBrowser();
         //pentru moment toate sunt bune
         LoggerUtility.endTestCase(testName);
+    }
+
+    @AfterSuite
+    public void finaliseLogFiles(){
+        LoggerUtility.mergeLogFilesIntoOne();
     }
 
 }
