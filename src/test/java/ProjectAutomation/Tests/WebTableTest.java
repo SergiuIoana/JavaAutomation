@@ -4,6 +4,8 @@ import ProjectAutomation.Pages.CommonPage;
 import ProjectAutomation.Pages.HomePage;
 import ProjectAutomation.ShareData.Hooks;
 import ProjectAutomation.ShareData.ShareData;
+import extentUtility.ExtentUtility;
+import extentUtility.ReportStep;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -53,10 +55,12 @@ public class WebTableTest extends Hooks {
         //WebElement ElementsField = driver.findElement(By.xpath("//body/div[@id='app']/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]"));
         //ElementsField.click();
         homePage.goToDesiredMenu("Elements");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Elements menu");
 
         //WebElement WebTablesField = driver.findElement(By.xpath("//span[contains(text(),'Web Tables')]"));
         //WebTablesField.click();
         commonPage.goToDesiredSubMenu("Web Tables");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Web Tables sub-menu");
 
         List<WebElement> tableElements = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -even' or @class='rt-tr -odd']"));
         Integer actualTableSize = tableElements.size();

@@ -7,6 +7,8 @@ import ProjectAutomation.Pages.CommonPage;
 import ProjectAutomation.Pages.HomePage;
 import ProjectAutomation.ShareData.Hooks;
 import ProjectAutomation.ShareData.ShareData;
+import extentUtility.ExtentUtility;
+import extentUtility.ReportStep;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -48,11 +50,13 @@ public class Frames extends Hooks {
         //alertFrameWindowElement.click();
         //elementsMethods.clickOnElements(alertFrameWindowElement);
         homePage.goToDesiredMenu("Alerts, Frame & Windows");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Alerts, Frame & Windows menu");
 
         //WebElement frameElement = driver.findElement(By.xpath("//span[contains(text(),'Frames')]"));
         //frameElement.click();
         //elementsMethods.clickOnElements(frameElement);
         commonPage.goToDesiredSubMenu("Frames");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Frames sub-menu");
 
         //Scroll down din JavaHelpersMethods
         javascriptHelpers.scrollDown(400);
@@ -63,6 +67,7 @@ public class Frames extends Hooks {
 
         WebElement sampleHeadingFrameElement = getDriver().findElement(By.id("sampleHeading"));
         System.out.println("Textul din new frame este : " + sampleHeadingFrameElement.getText());
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user interacts with the first iframe");
 
         // Ne ducem cu focusul inapoi pe pagina principala
         //driver.switchTo().defaultContent();
@@ -71,6 +76,7 @@ public class Frames extends Hooks {
         WebElement frame2Element = getDriver().findElement(By.id("frame2"));
         //driver.switchTo().frame(frame2Element);
         framesMethods.switchToFrame(frame2Element);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user interacts with the second iframe");
 
         //Scroll
         js.executeScript("window.scrollBy(200,400);");

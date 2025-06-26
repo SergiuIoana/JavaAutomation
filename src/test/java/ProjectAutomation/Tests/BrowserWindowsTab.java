@@ -5,6 +5,8 @@ import ProjectAutomation.Pages.CommonPage;
 import ProjectAutomation.Pages.HomePage;
 import ProjectAutomation.ShareData.Hooks;
 import ProjectAutomation.ShareData.ShareData;
+import extentUtility.ExtentUtility;
+import extentUtility.ReportStep;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -46,10 +48,12 @@ public class BrowserWindowsTab extends Hooks {
         //WebElement alertFrameWindowElement = driver.findElement(By.xpath("//h5[contains(text(),'Alerts, Frame & Windows')]"));
         //alertFrameWindowElement.click();
         homePage.goToDesiredMenu("Alerts, Frame & Windows");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Alerts, Frame & Windows menu");
 
         //WebElement browserWindowsElement = driver.findElement(By.xpath("//span[contains(text(),'Browser Windows')]"));
         //browserWindowsElement.click();
         commonPage.goToDesiredSubMenu("Browser Windows");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Browser Windows sub-menu");
 
         WebElement tabElement = driver.findElement(By.id("tabButton"));
         tabElement.click();
@@ -58,9 +62,11 @@ public class BrowserWindowsTab extends Hooks {
         List<String> tabList = new ArrayList<>(driver.getWindowHandles());
         //driver.switchTo().window(tabList.get(1));
         windowsMethods.switchToOpenedWindow();
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters interacts with new tab process");
 
         WebElement sampleHeadingElement = driver.findElement(By.id("sampleHeading"));
         System.out.println("Textul din new tab este : " + sampleHeadingElement.getText());
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters interacts with new window process");
 
         // Inchidem fereastra
         windowsMethods.closeTab();

@@ -8,6 +8,8 @@ import ProjectAutomation.Pages.HomePage;
 import ProjectAutomation.Pages.AlertsPage;
 import ProjectAutomation.ShareData.Hooks;
 import ProjectAutomation.ShareData.ShareData;
+import extentUtility.ExtentUtility;
+import extentUtility.ReportStep;
 import org.openqa.selenium.*;
 import org.testng.annotations.Test;
 import static org.testng.AssertJUnit.assertEquals;
@@ -53,11 +55,13 @@ public class AlertTest extends Hooks {
         //alertFrameWindowElement.click();
         //elementsMethods.clickOnElements(alertFrameWindowElement);
         homePage.goToDesiredMenu("Alerts, Frame & Windows");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Alerts, Frame & Windows menu");
 
         //WebElement alertElement = driver.findElement(By.xpath("//span[contains(text(),'Alerts')]"));
         //alertElement.click();
         //elementsMethods.clickOnElements(alertElement);
         commonPage.goToDesiredSubMenu("Alerts");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Alerts sub-menu");
 
         WebElement alertOkElement = getDriver().findElement(By.id("alertButton"));
         //alertOkElement.click();
@@ -69,11 +73,13 @@ public class AlertTest extends Hooks {
         //alertOk.accept();
         //alertMethods.interactWithAlertsOK();
         alertsPage.showAlertOk();
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user deals with alert ok");
 
         // Alert delay
         WebElement alertDelayOkElement = getDriver().findElement(By.id("timerAlertButton"));
         //alertDelayOkElement.click();
         elementsMethods.clickOnElements(alertDelayOkElement);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "");
 
         //Definim un wait explicit ca sa astepte dupa alerta
         //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
@@ -84,6 +90,7 @@ public class AlertTest extends Hooks {
         //alertDelayOk.accept();
         //alertMethods.interactWithDelayAlert();
         alertsPage.showAlertDelayed();
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user deals with alert with delay");
 
         //Alert confirmation
         WebElement alertConfirmationElement = getDriver().findElement(By.id("confirmButton"));
@@ -98,11 +105,13 @@ public class AlertTest extends Hooks {
         //Assert the Cancel message
         WebElement cancelElement = getDriver().findElement(By.id("confirmResult"));
         assertEquals("You selected Cancel", cancelElement.getText());
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user deals with alert with cancel");
 
         //Alert Promt
         WebElement alertPromtElement = getDriver().findElement(By.id("promtButton"));
         //alertPromtElement.click();
         elementsMethods.clickOnElements(alertPromtElement);
+
 
         //Alert alertPromt = driver.switchTo().alert();
         //alertPromt.sendKeys("Sergiu");
@@ -114,5 +123,6 @@ public class AlertTest extends Hooks {
         //Assert the text entered
         WebElement alertPromptResult = getDriver().findElement(By.id("promptResult"));
         assertEquals("You entered Sergiu", alertPromptResult.getText() );
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user deals with alert with prompt");
     }
 }

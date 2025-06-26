@@ -9,6 +9,8 @@ import ProjectAutomation.Pages.PracticeFormPage;
 import ProjectAutomation.ShareData.Hooks;
 import ProjectAutomation.ShareData.ShareData;
 import PropertyUtility.PropertyUtility;
+import extentUtility.ExtentUtility;
+import extentUtility.ReportStep;
 import org.openqa.selenium.*;
 import org.testng.annotations.Test;
 
@@ -57,14 +59,18 @@ public class PracticeFormTest extends Hooks {
         // elementsField.click();
         //elementsMethods.clickOnElements(elementsField);
         homePage.goToDesiredMenu("Forms");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Forms menu");
 
         //WebElement webTablesField = driver.findElement(By.xpath("//span[contains(text(),'Practice Form')]"));
         //webTablesField.click();
         //elementsMethods.clickOnElements(webTablesField);
 
         commonPage.goToDesiredSubMenu("Practice Form");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user enters on Practice Form sub-menu");
         practiceFormPage.completeFirstRegion(practiceFormObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user fills the entire first region section");
         practiceFormPage.completeGender(practiceFormObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user fills the gender section");
         //Un singur subiect selectat
         //practiceFormPage.completeSubject("Maths");
         //Mai multe subiecte selectate din lista
@@ -72,12 +78,15 @@ public class PracticeFormTest extends Hooks {
         //subject.add("Maths");
         //subject.add("English");
         practiceFormPage.completeSubjectWithList(practiceFormObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user fills the subject section");
         //List<String> hobbies = new ArrayList<>();
         //hobbies.add("Sports");
         //hobbies.add("Music");
         //hobbies.add("Reading");
         practiceFormPage.completeHobies(practiceFormObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user fills the hobbies section");
         practiceFormPage.completeState(practiceFormObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user fills the state section");
 
 
       /*  WebElement firstNameElement = driver.findElement(By.id("firstName"));
